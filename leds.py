@@ -39,7 +39,8 @@ def set(channel, leds, colorArray):
     message = ws.ws2811_get_return_t_str(resp)
     raise RuntimeError('ws2811_render failed : {0} ({1})'.format(resp, message))
 
-  time.sleep(0.25)
+def clear(channel, leds):
+  set(channel, leds, [[0 for i in range(100)] for j in range(100)])
 
 def shutdown(leds):
   ws.ws2811_fini(leds)
