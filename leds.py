@@ -29,6 +29,10 @@ def initialize(width, height, amplitude):
 
 def set(channel, leds, colorArray):
   position = 0
+
+  if not isinstance(colorArray[0], list):
+    colorArray = [colorArray]
+
   for row in colorArray:
     for element in row:
       ws.ws2811_led_set(channel, position, ctypes.c_uint32(element).value)
